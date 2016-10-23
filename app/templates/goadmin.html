@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="width : 300">
+    <form action="" method="post" name="{{title}}">
+        <p>
+            password : {{form.password}}
+            {% for error in form.errors.password %}
+            <br>
+            <span style="color: red;">{{error}}</span>
+            {% endfor %}
+        </p>
+        <p>
+            <input type="submit" value="Go admin">
+        </p>
+    </form>
+</div>
+
+{% endblock %}

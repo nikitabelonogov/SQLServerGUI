@@ -1,0 +1,41 @@
+<html>
+    <head>
+    <link rel="stylesheet" href="{{url_for('static', filename='css.css')}}"/>
+    <link rel="icon" type="image/png" href="https://twemoji.maxcdn.com/2/72x72/267b.png">
+    {% if title %}
+    <title>{{title}} - SQLServerGUI</title>
+    {% else %}
+    <title>SQLServerGUI</title>
+    {% endif %}
+    </head>
+    <body>
+        <a href="/goadmin">go admin</a>
+        <a href="/logout">logout</a>
+{#        TABLE MENU#}
+        <div>
+            {% if tables %}
+                <div class="tables">
+                    {% for table in tables %}
+                        <a href="/{{ table.table_name }}">
+                            {{ table.table_name }}
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+{#        CONTENT#}
+        <center>
+            {% block content %}{% endblock %}
+        </center>
+{#        PRINT FLASH MSG#}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash">
+            {% for category, message in messages %}
+                {{ message }}<br>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith%}
+    </body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div>
+    {% if columns %}
+        {% for column in columns %}
+            <span style="width: 100px; display: inline-block;">
+                {{ column.column_name }}
+            </span>
+        {% endfor %}
+    {% endif %}
+    <hr>
+    {% if rows %}
+        <div class="table">
+            {% for row in rows %}
+                {% for cell in row %}
+                    <span style="width: 100px; display: inline-block;">
+                        {{ cell }}
+                    </span>
+                {% endfor %}
+                <hr>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}
